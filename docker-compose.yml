@@ -1,0 +1,14 @@
+web:
+  build: .
+  ports:
+    - 9000:9000
+  links:
+    - db
+  environment:
+    - SONARQUBE_JDBC_USERNAME=postgres
+    - SONARQUBE_JDBC_PASSWORD=
+    - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonar
+db:
+  image: postgres:9.4.1
+  ports:
+    - "5432:5432"
